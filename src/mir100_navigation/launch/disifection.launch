@@ -1,0 +1,11 @@
+<launch>
+    <arg name="map_file" default="$(find mir100_gazebo)/maps/maze.yaml" doc="Path to a map .yaml file (required)." />
+    <arg name="robot_radius" default="0.5312"/>
+    <arg name="tool_radius" default="0.290"/> <!-- robot radius 0.5312m -->
+    
+    <!-- Initialize Gazebo World w/ Map & Robot-->
+    <include file="$(find mir100_gazebo)/launch/mirGazebo.launch"/>
+    
+    <!-- Initialize localization -->
+    <include file="$(find mir100_localization)/launch/scan_matching.launch"/>
+</launch>
