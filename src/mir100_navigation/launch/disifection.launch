@@ -2,10 +2,24 @@
     <arg name="map_file" default="$(find mir100_gazebo)/maps/maze.yaml" doc="Path to a map .yaml file (required)." />
     <arg name="robot_radius" default="0.5312"/>
     <arg name="tool_radius" default="0.290"/> <!-- robot radius 0.5312m -->
+    <arg name="target_x_vel" default="0.5"/>
+    <arg name="target_yaw_vel" default="0.4"/>
     
     <!-- Initialize Gazebo World w/ Map & Robot-->
     <include file="$(find mir100_gazebo)/launch/mirGazebo.launch"/>
     
     <!-- Initialize localization -->
     <include file="$(find mir100_localization)/launch/scan_matching.launch"/>
+
+    <!-- Initialize Move_Base_Flex -->
+    <include file="$(find mir100_navigation)/launch/move_base_flex.launch">
+        <arg name="robot_radius" value="$(arg robot_radius)"/>
+        <arg name="tool_radius" value="$(arg tool_radius)"/>
+    </include>
+
+    <!-- Initialize Tracking_PID local planner -->
+    <include file="$(find mir100_navigation)/launch/tracking_pid.launch">
+        <arg name="target_x_vel" value="$(arg target_x_vel)"/>
+        <arg name="target_yaw_vel" default="$(arg target_yaw_vel)"/>
+    </include>
 </launch>

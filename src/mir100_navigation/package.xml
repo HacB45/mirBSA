@@ -10,8 +10,20 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roslaunch</build_depend>
+  <build_depend>tracking_pid</build_depend>
 
   <exec_depend>mir100_gazebo</exec_depend>
   <exec_depend>mir100_localization</exec_depend>
+  <depend>base_local_planner</depend>
+  <depend>costmap_2d</depend>
+  <depend>pluginlib</depend>
+  <depend>nav_core</depend>
+  <depend>roscpp</depend>
+  <depend>tf</depend>
+  <exec_depend>tracking_pid</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>move_base</exec_depend>
+  <exec_depend>move_base_flex</exec_depend>
 
 </package>

@@ -5,6 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
   roslaunch
   mir100_localization
   mir100_gazebo
+  base_local_planner
 )
 
 ###################################

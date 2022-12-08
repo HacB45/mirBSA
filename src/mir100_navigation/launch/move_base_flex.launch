@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="prefix" value=""/>                  
+    <arg name="robot_radius" default="0.3"/>
+    <arg name="tool_radius" default="0.3"/>
+
+    <!--Move base flex, using the full_coverage_path_planner-->
+    <node pkg="mbf_costmap_nav" type="mbf_costmap_nav" respawn="false" name="move_base_flex" output="screen" required="true">
+        <param name="tf_timeout" value="1.5"/>
+        
+    <!-- local planner plugins -->
+        <rosparam file="$(find mir100_navigation)/config/controllers.yaml" command="load" />
+        
+        <!-- global planner plugins -->
+        <rosparam file="$(find mir100_navigation)/config/planners.yaml" command="load" />
+
+        <!-- recovery behaviors -->
+        <rosparam file="$(find mir100_navigation)/config/recovery_behaviors.yaml" command="load" />
+        
+        <!-- costmaps -->
+        <!-- <rosparam file="$(find mir100_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" subst_value="true" />
+        <rosparam file="$(find mir100_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" subst_value="true" />    
+        <rosparam file="$(find mir100_navigation)/config/costmap_local_params.yaml" command="load" subst_value="true"/>
+        <rosparam file="$(find mir100_navigation)/config/costmap_global_params.yaml" command="load" subst_value="true"/> -->
+        <rosparam file="$(find mir100_navigation)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find mir100_navigation)/config/global_costmap_params.yaml" command="load"/>
+        
+        <param name="SpiralSTC/robot_radius" value="$(arg robot_radius)"/>
+        <param name="SpiralSTC/tool_radius" value="$(arg tool_radius)"/>
+        <param name="global_costmap/robot_radius" value="$(arg robot_radius)"/>
+
+        <remap from="odom" to="/odom"/>
+        <remap from="scan" to="/scan"/>
+
+        <remap from="/move_base_flex/SpiralSTC/plan" to="/move_base/SpiralSTC/plan"/>
+        <remap from="/move_base_flex/tracking_pid/interpolator" to="/move_base/TrackingPidLocalPlanner/interpolator"/>
+    </node>
+
+
+    <!-- Move Base backwards compatibility -->
+    <node pkg="mbf_costmap_nav" type="move_base_legacy_relay.py" name="move_base" >
+        <param name="base_global_planner" value="SpiralSTC" />
+    </node>
+
+</launch>    

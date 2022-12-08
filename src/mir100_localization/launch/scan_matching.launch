@@ -8,11 +8,11 @@
   <arg name="initial_yaw"  default="0.0"/>
 
 
-  <group if="$(eval namespace != '')" ns="$(arg namespace)">
+  <group unless="$(eval namespace != '')">
 
     <!-- Initialize map publisher -->
-    <node name="static_map_server" pkg="map_server" type="map_server" args="$(arg map_file)" ns="/" output="screen">
-      <param name="frame_id" type="string" value="map"/>
+    <node name="static_map_server" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen">
+      <param name="frame_id" value="/map"/>
     </node>
 
     <!-- Initialize localization -->
