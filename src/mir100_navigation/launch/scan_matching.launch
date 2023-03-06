@@ -1,0 +1,38 @@
+<launch>
+  <arg name="map_file" default="$(find mir100_gazebo)/maps/maze.yaml" doc="Path to a map .yaml file (required)." />
+  <arg name="tf_prefix" default="" />
+  <arg name="namespace" default="$(arg tf_prefix)" doc="Namespace to push all topics into."/>
+  
+  <arg name="initial_pose_x" default="10.0"/>
+  <arg name="initial_pose_y" default="10.0"/>
+  <arg name="initial_yaw"  default="0.0"/>
+
+
+  <group if="$(eval namespace != '')" ns="$(arg namespace)">
+    <!-- <include file="$(find mir100_navigation)/launch/start_maps.launch">
+      <arg name="map_file" value="$(arg map_file)" />
+    </include> -->
+
+    <include file="$(find iris_lama_ros)/launch/loc2d.launch">
+        <arg name="tf_prefix" value="$(arg tf_prefix)" />
+        <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+        <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+        <arg name="initial_yaw" value="$(arg initial_yaw)" />
+    </include>
+  </group>
+
+  <!-- Duplicate of the above in case namespace is empty. This is necessary to
+       avoid the "<group> tag has an empty 'ns' attribute" parsing error. -->
+  <group unless="$(eval namespace != '')">
+    <!-- <include file="$(find mir100_navigation)/launch/start_maps.launch">
+      <arg name="map_file" value="$(arg map_file)" />
+    </include> -->
+
+    <include file="$(find iris_lama_ros)/launch/loc2d.launch">
+        <arg name="tf_prefix" value="$(arg tf_prefix)" />
+        <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+        <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+        <arg name="initial_yaw" value="$(arg initial_yaw)" />
+    </include>
+  </group>
+</launch>

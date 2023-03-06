@@ -10,20 +10,24 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roslaunch</build_depend>
-  <build_depend>tracking_pid</build_depend>
 
-  <exec_depend>mir100_gazebo</exec_depend>
-  <exec_depend>mir100_localization</exec_depend>
-  <depend>base_local_planner</depend>
-  <depend>costmap_2d</depend>
-  <depend>pluginlib</depend>
-  <depend>nav_core</depend>
-  <depend>roscpp</depend>
-  <depend>tf</depend>
-  <exec_depend>tracking_pid</exec_depend>
-  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>iris_lama_ros</exec_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>global_planner</exec_depend>
+  <exec_depend>base_local_planner</exec_depend>
+  <exec_depend>dwa_local_planner</exec_depend>
+  <exec_depend>dwb_critics</exec_depend>         <!-- for dwb_local_planner -->
+  <exec_depend>dwb_local_planner</exec_depend>   <!-- for dwb_local_planner -->
+  <exec_depend>dwb_plugins</exec_depend>         <!-- for dwb_local_planner -->
+  <!-- <exec_depend>eband_local_planner</exec_depend> -->
+  <exec_depend>hector_mapping</exec_depend>
   <exec_depend>map_server</exec_depend>
+  <exec_depend>mir100_driver</exec_depend>
+  <exec_depend>mir100_dwb_critics</exec_depend>     <!-- for dwb_local_planner -->
+  <exec_depend>mir100_gazebo</exec_depend>
   <exec_depend>move_base</exec_depend>
-  <exec_depend>move_base_flex</exec_depend>
-
+  <exec_depend>nav_core_adapter</exec_depend>    <!-- for dwb_local_planner -->
+  <exec_depend>python3-matplotlib</exec_depend>
+  <exec_depend>sbpl_lattice_planner</exec_depend>
+  <exec_depend>teb_local_planner</exec_depend>
 </package>

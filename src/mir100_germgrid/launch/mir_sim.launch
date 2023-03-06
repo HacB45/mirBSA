@@ -1,0 +1,24 @@
+<launch>
+    <arg name="map_file" default="$(find mir100_gazebo)/maps/maze.yaml" doc="Path to a map .yaml file (required)." />
+    <arg name="robot_radius" default="0.5312"/>
+    <arg name="tool_radius" default="0.290"/> <!-- robot radius 0.5312m -->
+    <arg name="coverage_area_size_x" default="20"/>
+    <arg name="coverage_area_size_y" default="20"/>
+    
+    <include file="$(find mir100_gazebo)/launch/mir_maze_world.launch"/>
+    <!-- <include file="$(find mir100_navigation)/launch/start_maps.launch">
+        <arg name="map_file" value="$(arg map_file)" />
+    </include>
+    <include file="$(find mir100_germgrid)/launch/iris_slam2d.launch"/> -->
+    
+    <include file="$(find mir100_navigation)/launch/scan_matching.launch"/>
+    <include file="$(find mir100_germgrid)/launch/irradiation.launch"/>
+    <!-- <include file="$(find mir100_navigation)/launch/start_planner.launch"/> -->
+    <include file="$(find full_coverage_path_planner)/test/full_coverage_path_planner/test_full_coverage_path_planner.launch">
+        <arg name="map" value="$(arg map_file)"/>
+        <arg name="robot_radius" value="$(arg robot_radius)"/>
+        <arg name="tool_radius" value="$(arg tool_radius)"/>
+        <arg name="coverage_area_size_x" value="$(arg coverage_area_size_x)"/>
+        <arg name="coverage_area_size_y" value="$(arg coverage_area_size_y)"/>
+    </include>
+</launch>

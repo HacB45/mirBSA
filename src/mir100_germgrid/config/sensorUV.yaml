@@ -1,0 +1,11 @@
+
+# ângulo de abertura do sensor UV
+openAngle: 90
+
+# ângulo central do sensor UV
+dirAngle: 0
+
+# range of the UV light
+rangeUV: 4
+
+poseSensor: [0.0 , 0.0, 0.0]
