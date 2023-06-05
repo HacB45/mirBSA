@@ -11,7 +11,7 @@
 
     <!-- PID controller -->
     <node name="controller" pkg="tracking_pid" type="controller" output="screen">
-      <remap from="move_base/cmd_vel" to="/move_base/cmd_vel"/>
+      <remap from="move_base/cmd_vel" to="/cmd_vel"/>
       <remap from="local_trajectory" to="trajectory"/>
       <param name="controller_debug_enabled" value="True"/>
       <param name="l" value="0.5"/>
@@ -28,7 +28,7 @@
     <node pkg="mobile_robot_simulator" type="mobile_robot_simulator_node" name="fake_odometry" output="screen">
       <param name="publish_map_transform" value="true"/>
       <param name="publish_rate" value="10.0"/>
-      <param name="velocity_topic" value="/move_base/cmd_vel"/>
+      <param name="velocity_topic" value="/cmd_vel"/>
       <param name="odometry_topic" value="/odom"/>
     </node>
 

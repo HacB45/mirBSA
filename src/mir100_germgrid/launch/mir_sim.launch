@@ -1,7 +1,7 @@
 <launch>
-    <arg name="map_file" default="$(find mir100_gazebo)/maps/maze.yaml" doc="Path to a map .yaml file (required)." />
+    <arg name="map_file" default="$(find mir100_gazebo)/maps/newmap.yaml" doc="Path to a map .yaml file (required)." />
     <arg name="robot_radius" default="0.5312"/>
-    <arg name="tool_radius" default="0.290"/> <!-- robot radius 0.5312m -->
+    <arg name="tool_radius" default="0.5"/> <!-- robot radius 0.5312m -->
     <arg name="coverage_area_size_x" default="20"/>
     <arg name="coverage_area_size_y" default="20"/>
     

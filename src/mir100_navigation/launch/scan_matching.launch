@@ -3,8 +3,8 @@
   <arg name="tf_prefix" default="" />
   <arg name="namespace" default="$(arg tf_prefix)" doc="Namespace to push all topics into."/>
   
-  <arg name="initial_pose_x" default="10.0"/>
-  <arg name="initial_pose_y" default="10.0"/>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_yaw"  default="0.0"/>
 
 

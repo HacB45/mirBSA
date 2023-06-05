@@ -42,7 +42,7 @@
         <param name="odometry_topic" value="/odom"/>
     </node> -->
 
-    <!--We need a map to fully cover-->
+    <!-- We need a map to fully cover -->
     <node name="grid_server" pkg="map_server" type="map_server" args="$(arg map)">
         <param name="frame_id" value="map"/>
     </node>
@@ -57,7 +57,7 @@
 
     <!--Tracking_pid tries to get the robot as close to it's goal point as possible-->
     <node name="controller" pkg="tracking_pid" type="controller" output="screen">
-        <remap from="move_base/cmd_vel" to="/move_base/cmd_vel"/>
+        <remap from="move_base/cmd_vel" to="/cmd_vel"/>
         <remap from="local_trajectory" to="trajectory"/>
         <param name="controller_debug_enabled" value="True"/>
         <param name="track_base_link" value="true"/>
